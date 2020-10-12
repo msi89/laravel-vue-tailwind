@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/redoc', function (Request $request) {
+    return view('docs.redoc');
 });
+Route::get('/docs', function (Request $request) {
+    return view('docs.swagger');
+});
+Route::get('/tweets', 'Api\TweetController@index')->name('list-tweet');
+Route::get('/tweets/{id}', 'Api\TweetController@show')->name('show-tweet');
